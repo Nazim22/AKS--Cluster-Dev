@@ -19,13 +19,7 @@ To increase development velocity, enhance security posture, and improve operatio
 ### Problem Statement
 The current process for deploying cloud infrastructure can be manual and inconsistent, leading to slower delivery cycles, potential security vulnerabilities, and configuration drift. A lack of a standardized, automated platform creates operational overhead and hinders our ability to scale effectively. This POC addresses the need for a secure, repeatable, and auditable process for infrastructure provisioning and application deployment.
 
----
 
-## Architecture
-
-<img width="1581" height="1000" alt="image" src="https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297" />
-
----
 ## 🗺️ Scope of Work
 
 | In-Scope (Deliverables) | Out-of-Scope (Items) |
@@ -66,6 +60,14 @@ This section details the specific technical configurations and decisions for the
     2.  **VNet Link:** This zone will be linked to our VNet, making it authoritative for all resources within it.
     3.  **ExternalDNS Controller:** We will deploy the ExternalDNS controller to our AKS cluster to automatically create `A` records in our private zone from Kubernetes Ingress resources.
     4.  **Conditional Forwarding:** The on-premises network team will configure the corporate DNS server to forward all queries for `hero.org` to Azure's internal DNS resolver (`168.63.129.16`).
+ 
+---
+
+## Architecture
+
+<img width="1581" height="1000" alt="image" src="https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297" />
+
+---
 
 * **Sizing and VM Selection:**
 
