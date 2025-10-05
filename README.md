@@ -56,7 +56,7 @@ This section details the specific technical configurations and decisions for the
     * **AKS Cluster Identity:** The AKS cluster itself will be assigned a **System-Assigned Managed Identity** to interact with other Azure resources on its behalf (e.g., creating load balancers or attaching disks).
 
 * **DNS Implementation Strategy:**
-    1.  **Azure Private DNS Zone:** We will create a private zone for our domain (`hero.org`).
+    1.  **Azure Private DNS Zone:** We will create a private zone for our domain.
     2.  **VNet Link:** This zone will be linked to our VNet, making it authoritative for all resources within it.
     3.  **ExternalDNS Controller:** We will deploy the ExternalDNS controller to our AKS cluster to automatically create `A` records in our private zone from Kubernetes Ingress resources.
     4.  **Conditional Forwarding:** The on-premises network team will configure the corporate DNS server to forward all queries for `hero.org` to Azure's internal DNS resolver (`168.63.129.16`).
