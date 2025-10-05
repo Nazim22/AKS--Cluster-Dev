@@ -20,6 +20,12 @@ To increase development velocity, enhance security posture, and improve operatio
 The current process for deploying cloud infrastructure can be manual and inconsistent, leading to slower delivery cycles, potential security vulnerabilities, and configuration drift. A lack of a standardized, automated platform creates operational overhead and hinders our ability to scale effectively. This POC addresses the need for a secure, repeatable, and auditable process for infrastructure provisioning and application deployment.
 
 ---
+
+## Architecture
+
+<img width="1581" height="1000" alt="image" src="https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297" />
+
+---
 ## 🗺️ Scope of Work
 
 | In-Scope (Deliverables) | Out-of-Scope (Items) |
