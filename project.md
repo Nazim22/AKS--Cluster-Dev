@@ -181,7 +181,6 @@ This architecture is a strategic enabler for the business, providing:
     * **App Hosting Team**: primary executors of the POC.
     * **Network Engineering Team**:Required stakeholder for the configuration of the on-premises DNS conditional forwarder.
     * **Security & Compliance Team**:Stakeholder for architectural review and approval.
----
 
 
 
