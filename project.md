@@ -89,6 +89,12 @@ This project will be executed in distinct phases, moving from a foundational man
 
 ---
 
+## Architecture
+
+![image](https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297)
+
+---
+
 ## 🏗️ Technical Architecture Deep Dive
 
 ### **VNet and Subnet Address Space**
@@ -143,12 +149,6 @@ terraform-aks-platform/
         ├── terraform.tfvars
         └── backend.tf
 ```
-
-## Architecture
-
-![image](https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297)
-
----
 
 * **Sizing and VM Selection:**
 
