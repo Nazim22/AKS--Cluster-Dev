@@ -143,6 +143,8 @@ terraform-aks-platform/
         ├── terraform.tfvars
         └── backend.tf
 
+---
+
 ## 🧮 Architecture Sizing and VM Selection
 
 | **Component** | **Recommended Size** | **Rationale** |
