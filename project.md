@@ -2,7 +2,7 @@
 
 > **Document Version:** 1.0  
 > **Status:** Proposed  
-> **Owner:** DevOps Engineering  
+> **Owner:** App Hosting Team  
 > **Date:** October 5, 2025
 
 ---
