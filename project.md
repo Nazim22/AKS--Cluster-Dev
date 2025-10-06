@@ -174,13 +174,13 @@ This architecture is a strategic enabler for the business, providing:
 ## Required Resources & Stakeholders
 
 * **Azure Platform:**
-    * An active Azure Subscription with Contributor-level permissions.
-    * Sufficient vCPU quota for the planned VM and AKS node pools.
+    * **An active Azure Subscription with Contributor-level permissions.
+    * **Sufficient vCPU quota for the planned VM and AKS node pools.
   
 * **Personnel & Stakeholders:**
-    * **App Hosting Team**: primary executors of the POC.
-    * **Network Engineering Team**:Required stakeholder for the configuration of the on-premises DNS conditional forwarder.
-    * **Security & Compliance Team**:Stakeholder for architectural review and approval.
+    **App Hosting Team**: primary executors of the POC.
+    **Network Engineering Team**:Required stakeholder for the configuration of the on-premises DNS conditional forwarder.
+    **Security & Compliance Team**:Stakeholder for architectural review and approval.
 
 
 
