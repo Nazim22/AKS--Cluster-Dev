@@ -102,7 +102,16 @@ This project will be executed in distinct phases, moving from a foundational man
   - `AKSSubnet: 10.50.0.0/23` — 512 IPs for pods and nodes  
   - `RunnerSubnet: 10.50.2.0/27` — 32 IPs for CI/CD runners  
   - `AzureBastionSubnet: 10.50.3.0/27` — 32 IPs, per Microsoft recommendation  
+* **VNet and Subnet Address Space:**
+    * **Virtual Network (VNet):** **To Be Confirmed (TBC)** - A dedicated private network space will be allocated.
+    * **Subnets:**
+        * `AKSSubnet`: **TBC (Recommended size: /23)** - Sized to support up to 512 IPs for high pod density with Azure CNI.
+        * `RunnerSubnet`: **TBC (Recommended size: /27)** - Sized to support up to 32 IPs, sufficient for a pool of CI/CD runners.
+        * `AzureBastionSubnet`: **TBC (Recommended size: /27)** - Microsoft recommends at least a /27 for this dedicated service.
 
+* **AKS Network Profile & Policy:**
+    * **Network Profile:** We will use **Azure CNI**. This high-performance network plugin assigns a full VNet IP address to each pod, enabling direct connectivity and compatibility with advanced network features.
+    * **Network Policy:** We will enable **Azure Network Policy**. This acts as a firewall within our cluster, allowing us to define rules that control which pods can communicate with each other, significantly enhancing intra-cluster security.
 ### **AKS Network Profile & Policy**
 - **Network Plugin:** Azure CNI  
 - **Network Policy:** Azure Network Policy (or Calico) for intra-cluster firewalling.  
