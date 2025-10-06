@@ -143,4 +143,3 @@ terraform-aks-platform/
         ├── terraform.tfvars
         └── backend.tf
 
----
