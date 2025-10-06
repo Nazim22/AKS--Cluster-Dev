@@ -142,5 +142,59 @@ terraform-aks-platform/
         ├── main.tf
         ├── terraform.tfvars
         └── backend.tf
+...
+---
+
+## Architecture
+
+![image](https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297)
+
+---
+
+* **Sizing and VM Selection:**
+
+| Component | Recommended Size | Rationale |
+| :--- | :--- | :--- |
+| **AKS System Nodepool** | 2 x `Standard_D2s_v5` | System pods are lightweight. Two small, cost-effective nodes provide high availability for critical cluster services. |
+| **AKS User Nodepool** | 2 x `Standard_D4s_v5` | A solid general-purpose starting point (4 vCPUs, 16 GiB RAM). We will enable the cluster autoscaler to scale this nodepool up to 10 nodes based on demand. |
+| **Self-Hosted Runner VM**| 1 x `Standard_D2s_v5` | CI/CD jobs are bursty. This size (2 vCPUs, 8 GiB RAM) provides a good balance of CPU and fast Premium SSD storage for running Terraform and build jobs efficiently. |
+| **Azure Bastion Host** | `Standard` SKU | The Standard SKU is required for features like scaling and is recommended for production environments. Sizing is managed by Azure. |
+
+* **Linux Profile (Node Configuration):**
+    We will use the default Azure-tuned Ubuntu image for our AKS nodes. We will configure SSH key access to the nodes during creation, which, combined with Azure Bastion, will allow for secure "break-glass" debugging if ever required.
+
+---
+## 💼 Strategic Importance & Business Value
+
+This architecture is a strategic enabler for the business, providing:
+* **Enhanced Security Posture:** A "zero-trust" network with private endpoints and fine-grained network policies drastically reduces the attack surface.
+* **Increased Development Velocity:** The GitOps workflow turns the deployment process into a simple `git push`, removing manual bottlenecks and accelerating time-to-market.
+* **Operational Excellence:** Infrastructure as Code eliminates configuration drift and makes our platform repeatable, auditable, and easy to recover.
+* **Scalability & Cost-Effectiveness:** The use of the cluster autoscaler ensures that we only pay for the compute resources we need, automatically scaling to meet user demand.
+
+---
+## ✅ Success Criteria
+
+The Proof of Concept will be deemed successful upon the unconditional achievement of the following criteria:
+* **Automation:** All Azure infrastructure is successfully provisioned and modified exclusively through the GitHub Actions pipeline triggered by a `git push`.
+* **Security:** The deployed AKS cluster's API server is confirmed to be private and not accessible from the public internet.
+* **Integration:** A DNS query for a deployed application's hostname from the corporate network resolves correctly to the private IP of the Ingress Controller.
+* **Functionality:** The sample application is successfully deployed and is fully accessible from a client on the corporate network.
+
+---
+## 👥 Required Resources & Stakeholders
+
+* **Azure Platform:**
+    * An active Azure Subscription with Contributor-level permissions.
+    * Sufficient vCPU quota for the planned VM and AKS node pools.
+* **Personnel & Stakeholders:**
+    * **DevOps Team:** Project lead and primary executors of the POC.
+    * **Network Engineering Team:** Required stakeholder for the configuration of the on-premises DNS conditional forwarder.
+    * **Security & Compliance Team:** Stakeholder for architectural review and approval.
+
+
+
+
+
 
 
