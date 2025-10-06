@@ -90,10 +90,7 @@ This project will be executed in distinct phases, moving from a foundational man
 ---
 
 ## Architecture
-
-
-<img width="3368" height="3276" alt="image" src="https://github.com/user-attachments/assets/94ecafe9-ace2-45f7-bd87-ac233f3d953d" />
-
+<img width="3368" height="2008" alt="image" src="https://github.com/user-attachments/assets/724bbec0-5b15-4aa5-ad3c-c1fcbed8ff37" />
 
 ---
 
