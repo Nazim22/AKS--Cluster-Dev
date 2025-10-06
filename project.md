@@ -1,103 +1,193 @@
-# 🚀 POC: Secure and Automated AKS Cloud Platform
+# 🧩 POC: Secure and Automated AKS Cloud Platform
 
-> **Document Version:** 1.2  
-> **Status:** Proposed  
-> **Owner:** DevOps Engineering  
-> **Date:** October 5, 2025
-
----
-## Executive Summary
-
-This document outlines a Proof of Concept (POC) to validate a secure, automated, and production-ready architectural pattern for deploying applications on the Azure Kubernetes Service (AKS). The primary objective is to demonstrate the feasibility of managing the entire infrastructure lifecycle via a GitOps workflow, leveraging Infrastructure as Code (IaC) principles. The successful completion of this POC will establish a standardized blueprint for migrating future workloads to a modern, scalable, and secure cloud-native platform, ensuring seamless and secure integration with existing corporate network and identity services.
+**Document Version:** 1.2  
+**Status:** Proposed  
+**Owner:** DevOps Engineering  
+**Date:** October 5, 2025  
 
 ---
+
+## 📝 Executive Summary
+
+This document outlines a Proof of Concept (POC) to validate a secure, automated, and production-ready architectural pattern for deploying applications on the **Azure Kubernetes Service (AKS)**.  
+The primary objective is to demonstrate the feasibility of managing the entire infrastructure lifecycle via a **GitOps workflow**, leveraging **Infrastructure as Code (IaC)** principles.  
+
+The successful completion of this POC will establish a standardized blueprint for migrating future workloads to a modern, scalable, and secure cloud-native platform, ensuring seamless and secure integration with existing corporate network and identity services.
+
+---
+
 ## 🎯 Business Objective & Problem Statement
 
-### Objective
+### **Objective**
 To increase development velocity, enhance security posture, and improve operational efficiency by creating a standardized, automated platform for cloud-native applications.
 
-### Problem Statement
-The current process for deploying cloud infrastructure can be manual and inconsistent, leading to slower delivery cycles, potential security vulnerabilities, and configuration drift. A lack of a standardized, automated platform creates operational overhead and hinders our ability to scale effectively. This POC addresses the need for a secure, repeatable, and auditable process for infrastructure provisioning and application deployment.
+### **Problem Statement**
+The current process for deploying cloud infrastructure can be manual and inconsistent, leading to slower delivery cycles, potential security vulnerabilities, and configuration drift.  
+A lack of a standardized, automated platform creates operational overhead and hinders our ability to scale effectively.  
+This POC addresses the need for a secure, repeatable, and auditable process for infrastructure provisioning and application deployment.
 
+---
 
 ## 🗺️ Scope of Work
 
-| In-Scope (Deliverables) | Out-of-Scope (Items) |
-| :--- | :--- |
+| **In-Scope (Deliverables)** | **Out-of-Scope (Items)** |
+|------------------------------|---------------------------|
 | ✅ Automated provisioning of all Azure networking components via Terraform. | ❌ Deployment of complex, multi-tier stateful applications. |
 | ✅ Deployment of a secure administrative access method (Azure Bastion). | ❌ Performance benchmarking, load testing, or formal DR testing. |
 | ✅ Deployment and configuration of a private self-hosted GitHub Actions runner. | ❌ Implementation of advanced observability (monitoring, logging, tracing). |
 | ✅ Automated deployment of a private AKS cluster using the self-hosted runner. | ❌ Detailed cost analysis and financial optimization reporting. |
-| ✅ Configuration and validation of the Hybrid DNS resolution flow. | |
-| ✅ Deployment of a sample stateless application to verify the end-to-end workflow. | |
+| ✅ Configuration and validation of the Hybrid DNS resolution flow. |   |
+| ✅ Deployment of a sample stateless application to verify the end-to-end workflow. |   |
 
 ---
+
 ## 🛣️ Project Phases and Next Steps
 
-This project will be executed in distinct phases, moving from a foundational manual setup to a fully automated, scalable platform. This approach ensures a controlled rollout and sets clear expectations.
+This project will be executed in distinct phases, moving from a foundational manual setup to a fully automated, scalable platform.
 
-* **Phase 1: Foundational Bootstrap (Manual Setup)**
-    * **Objective:** To solve the initial "chicken-and-egg" problem by creating the absolute minimum resources required to enable automation.
-    * **Tasks:**
-        * Manually create the **Service Principal** (App Registration) in Azure AD to act as the identity for our CI/CD pipeline.
-        * Manually create the **Azure Storage Account** that will securely store the Terraform state file.
-    * **Outcome:** A secure foundation for all subsequent automated work. This phase is performed once and is not part of the recurring workflow.
+### **Phase 1: Foundational Bootstrap (Manual Setup)**
+**Objective:** Solve the “chicken-and-egg” problem by creating the minimum resources required to enable automation.
 
-* **Phase 2: Core Infrastructure Automation (This POC)**
-    * **Objective:** To build and validate the core, automated infrastructure platform as defined in this document's scope.
-    * **Tasks:**
-        * Develop reusable Terraform modules for networking, AKS, Bastion, and the CI/CD runner.
-        * Create a GitHub Actions pipeline that uses the bootstrapped identity to deploy the infrastructure.
-        * Deploy a sample application to verify end-to-end functionality.
-    * **Outcome:** A working, automated, and secure AKS platform that meets all success criteria.
+**Tasks:**
+- Manually create the Service Principal (App Registration) in Azure AD to act as the CI/CD pipeline identity.  
+- Manually create the Azure Storage Account to securely store the Terraform state file.  
 
-* **Phase 3: Cluster Onboarding & Hardening (Next Steps)**
-    * **Objective:** To prepare the validated platform for its first real workloads by adding essential services and governance.
-    * **Potential Tasks:**
-        * Automate the deployment of an NGINX Ingress Controller for traffic management.
-        * Integrate with Azure Monitor for basic logging and metrics.
-        * Implement Azure Policy to enforce security and compliance standards (e.g., prevent public load balancers).
-        * Create a standardized onboarding guide for the first pilot application team.
-
-* **Phase 4: Full GitOps & Self-Service (Future Vision)**
-    * **Objective:** To evolve the platform into a true self-service model for application deployments.
-    * **Potential Tasks:**
-        * Implement a GitOps controller (like ArgoCD or Flux) for continuous application deployment.
-        * Develop standardized patterns for stateful applications using Azure Files/Disk.
-        * Publish a service catalog of reusable Terraform modules for development teams.
+**Outcome:** A secure foundation for all subsequent automated work.
 
 ---
+
+### **Phase 2: Core Infrastructure Automation (This POC)**
+**Objective:** Build and validate the core, automated infrastructure platform as defined in this document.
+
+**Tasks:**
+- Develop reusable Terraform modules for networking, AKS, Bastion, and the CI/CD runner.  
+- Create a GitHub Actions pipeline using the bootstrapped identity to deploy infrastructure.  
+- Deploy a sample application to verify end-to-end functionality.  
+
+**Outcome:** A working, automated, and secure AKS platform.
+
+---
+
+### **Phase 3: Cluster Onboarding & Hardening (Next Steps)**
+**Objective:** Prepare the validated platform for production workloads.
+
+**Potential Tasks:**
+- Automate NGINX Ingress Controller deployment.  
+- Integrate with Azure Monitor.  
+- Implement Azure Policy for compliance.  
+- Create onboarding guide for pilot application teams.  
+
+---
+
+### **Phase 4: Full GitOps & Self-Service (Future Vision)**
+**Objective:** Evolve the platform into a true self-service model.
+
+**Potential Tasks:**
+- Implement GitOps (ArgoCD/Flux).  
+- Develop stateful app patterns (Azure Files/Disk).  
+- Publish a reusable Terraform service catalog.  
+
+---
+
 ## 🏗️ Technical Architecture Deep Dive
 
-This section details the specific technical configurations and decisions for the core components of the architecture.
+### **VNet and Subnet Address Space**
+- **VNet:** `10.50.0.0/16` — 65,536 IPs  
+- **Subnets:**
+  - `AKSSubnet: 10.50.0.0/23` — 512 IPs for pods and nodes  
+  - `RunnerSubnet: 10.50.2.0/27` — 32 IPs for CI/CD runners  
+  - `AzureBastionSubnet: 10.50.3.0/27` — 32 IPs, per Microsoft recommendation  
 
-* **VNet and Subnet Address Space:**
-    * **Virtual Network (VNet):** `10.50.0.0/16` - Provides 65,536 total IP addresses, offering ample room for future expansion.
-    * **Subnets:**
-        * `AKSSubnet`: `10.50.0.0/23` - Allocates 512 IPs. This supports the Azure CNI requirement for a unique IP per pod and can comfortably host a scaled-out cluster (e.g., up to 15 nodes with the default 30 pods per node).
-        * `RunnerSubnet`: `10.50.2.0/27` - Allocates 32 IPs, sufficient for a small pool of CI/CD runner VMs.
-        * `AzureBastionSubnet`: `10.50.3.0/27` - Allocates 32 IPs. Microsoft recommends at least a `/27` for this dedicated subnet.
+### **AKS Network Profile & Policy**
+- **Network Plugin:** Azure CNI  
+- **Network Policy:** Azure Network Policy (or Calico) for intra-cluster firewalling.  
 
-* **AKS Network Profile & Policy:**
-    * **Network Profile:** We will use **Azure CNI**. This high-performance network plugin assigns a full VNet IP address to each pod, enabling direct connectivity and compatibility with advanced network features.
-    * **Network Policy:** We will enable **Azure Network Policy** (or alternatively, Calico). This acts as a firewall within our cluster, allowing us to define rules that control which pods can communicate with each other, significantly enhancing intra-cluster security.
+### **Storage Configuration**
+- **Terraform State File:** Stored in Azure Blob Storage.  
+- **AKS Pod Storage:** Default ephemeral storage; future use of Azure Disks or Files.  
 
-* **Storage Configuration:**
-    * **Terraform State File:** The Terraform state file will be stored securely in an **Azure Blob Storage** container, a separate and dedicated resource for this critical function.
-    * **AKS Pod Storage:** For this POC's stateless application, we will use the default ephemeral storage on the nodes. Future stateful applications will use **Azure Disk** (for single-pod, read/write volumes) or **Azure Files** (for shared storage).
+### **Identity, Access & Permissions**
+- **CI/CD Identity:** GitHub Actions with Federated OIDC for secretless auth.  
+- **AKS Cluster Identity:** System-assigned Managed Identity for resource access.  
 
-* **Identity, Access & Permissions:**
-    * **CI/CD Pipeline Identity:** The GitHub Actions workflow will use an **App Registration** with a **Federated Credential (OIDC)** for a modern, secretless authentication approach.
-    * **AKS Cluster Identity:** The AKS cluster itself will be assigned a **System-Assigned Managed Identity** to interact with other Azure resources on its behalf (e.g., creating load balancers or attaching disks).
+### **DNS Implementation Strategy**
+1. Create Azure Private DNS Zone.  
+2. Link zone to VNet.  
+3. Deploy ExternalDNS controller in AKS.  
+4. Configure on-prem DNS for conditional forwarding.  
 
-* **DNS Implementation Strategy:**
-    1.  **Azure Private DNS Zone:** We will create a private zone for our domain.
-    2.  **VNet Link:** This zone will be linked to our VNet, making it authoritative for all resources within it.
-    3.  **ExternalDNS Controller:** We will deploy the ExternalDNS controller to our AKS cluster to automatically create `A` records in our private zone from Kubernetes Ingress resources.
-    4.  **Conditional Forwarding:** The on-premises network team will configure the corporate DNS server to forward all queries for `hero.org` to Azure's internal DNS resolver (`168.63.129.16`).
- 
 ---
 
 ## 🏛️ Terraform Code Structure
 
-The Terraform project will be organized using a modular approach to promote reusability, maintainability, and consistency. The directory structure is designed to separate the reusable "building blocks" (`modules`) from the environment-specific "implementations" (`live`).
+```plaintext
+terraform-aks-platform/
+├── modules/                # Reusable components
+│   ├── networking/         # VNet, subnets, NSGs
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── aks/                # AKS cluster & node pools
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── bastion/            # Azure Bastion host
+│   │   ├── main.tf
+│   │   └── variables.tf
+│   └── runner-vm/          # GitHub Actions runner VM
+│       ├── main.tf
+│       └── variables.tf
+└── live/                   # Environment-specific configs
+    └── prod/
+        ├── main.tf
+        ├── terraform.tfvars
+        └── backend.tf
+
+## 🧮 Architecture Sizing and VM Selection
+
+| **Component** | **Recommended Size** | **Rationale** |
+|----------------|----------------------|----------------|
+| **AKS System Nodepool** | 2 × Standard_D2s_v5 | Lightweight system pods, high availability. |
+| **AKS User Nodepool** | 2 × Standard_D4s_v5 | General purpose; autoscaler enabled. |
+| **Self-Hosted Runner VM** | 1 × Standard_D2s_v5 | Balanced for Terraform/CI/CD workloads. |
+| **Azure Bastion Host** | Standard SKU | Required for production-grade features. |
+
+---
+
+### 🐧 Linux Profile (Node Configuration)
+
+Using Azure-tuned **Ubuntu** images with **SSH key access** via **Azure Bastion** for secure, break-glass debugging and administrative access.
+
+---
+
+## 💼 Strategic Importance & Business Value
+
+- **Enhanced Security Posture:** Implements zero-trust networking with private endpoints and fine-grained network policies to reduce the attack surface.  
+- **Increased Development Velocity:** The GitOps model enables push-based deployments, removing manual bottlenecks.  
+- **Operational Excellence:** Infrastructure as Code (IaC) ensures repeatability, auditability, and faster recovery.  
+- **Scalability & Cost-Effectiveness:** Autoscaler dynamically adjusts resources, optimizing for cost and performance.  
+
+---
+
+## ✅ Success Criteria
+
+The POC will be deemed successful upon meeting the following conditions:
+
+- **Automation:** All Azure infrastructure is provisioned and updated via GitHub Actions pipelines.  
+- **Security:** The AKS API server is private and inaccessible from the public internet.  
+- **Integration:** DNS queries for deployed applications resolve correctly within the corporate network.  
+- **Functionality:** The sample application is deployed successfully and accessible from internal clients.  
+
+---
+
+## 👥 Required Resources & Stakeholders
+
+### **Azure Platform**
+- Active **Azure Subscription** with Contributor-level permissions.  
+- Adequate **vCPU quota** for AKS clusters, Bastion, and VM workloads.  
+
+### **Personnel & Stakeholders**
+- **DevOps Team:** Project leads and executors responsible for automation and implementation.  
+- **Network Engineering Team:** Configure DNS conditional forwarders between corporate and Azure networks.  
+- **Security & Compliance Team:** Review and approve architecture for alignment with corporate standards.  
+
