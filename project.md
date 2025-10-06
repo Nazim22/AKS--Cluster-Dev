@@ -91,7 +91,8 @@ This project will be executed in distinct phases, moving from a foundational man
 
 ## Architecture
 
-![image](https://github.com/user-attachments/assets/9116b05c-658f-4be0-bf22-5d0a6b79c297)
+
+<img width="3368" height="3276" alt="image" src="https://github.com/user-attachments/assets/94ecafe9-ace2-45f7-bd87-ac233f3d953d" />
 
 
 ---
