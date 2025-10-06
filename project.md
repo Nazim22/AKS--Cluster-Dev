@@ -1,8 +1,8 @@
 # POC: Secure and Automated AKS Cloud Platform
 
-**Document Version:** 1.2  
+**Document Version:** 1.0
 **Status:** Proposed  
-**Owner:** DevOps Engineering  
+**Owner:** App Hosting Team
 **Date:** October 5, 2025  
 
 ---
