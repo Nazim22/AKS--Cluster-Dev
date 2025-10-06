@@ -1,4 +1,4 @@
-# 🧩 POC: Secure and Automated AKS Cloud Platform
+# POC: Secure and Automated AKS Cloud Platform
 
 **Document Version:** 1.2  
 **Status:** Proposed  
@@ -7,7 +7,7 @@
 
 ---
 
-## 📝 Executive Summary
+##  Executive Summary
 
 This document outlines a Proof of Concept (POC) to validate a secure, automated, and production-ready architectural pattern for deploying applications on the **Azure Kubernetes Service (AKS)**.  
 The primary objective is to demonstrate the feasibility of managing the entire infrastructure lifecycle via a **GitOps workflow**, leveraging **Infrastructure as Code (IaC)** principles.  
@@ -16,7 +16,7 @@ The successful completion of this POC will establish a standardized blueprint fo
 
 ---
 
-## 🎯 Business Objective & Problem Statement
+## Business Objective & Problem Statement
 
 ### **Objective**
 To increase development velocity, enhance security posture, and improve operational efficiency by creating a standardized, automated platform for cloud-native applications.
@@ -28,7 +28,7 @@ This POC addresses the need for a secure, repeatable, and auditable process for 
 
 ---
 
-## 🗺️ Scope of Work
+## Scope of Work
 
 | **In-Scope (Deliverables)** | **Out-of-Scope (Items)** |
 |------------------------------|---------------------------|
@@ -41,7 +41,7 @@ This POC addresses the need for a secure, repeatable, and auditable process for 
 
 ---
 
-## 🛣️ Project Phases and Next Steps
+## Project Phases and Next Steps
 
 This project will be executed in distinct phases, moving from a foundational manual setup to a fully automated, scalable platform.
 
@@ -94,7 +94,7 @@ This project will be executed in distinct phases, moving from a foundational man
 
 ---
 
-## 🏗️ Technical Architecture Deep Dive
+## Technical Architecture Deep Dive
 
 ### **VNet and Subnet Address Space**
 - **VNet:** `10.50.0.0/16` — 65,536 IPs  
@@ -123,7 +123,7 @@ This project will be executed in distinct phases, moving from a foundational man
 
 ---
 
-## 🏛️ Terraform Code Structure
+## Terraform Code Structure
 
 ```plaintext
 terraform-aks-platform/
@@ -162,7 +162,7 @@ terraform-aks-platform/
     We will use the default Azure-tuned Ubuntu image for our AKS nodes. We will configure SSH key access to the nodes during creation, which, combined with Azure Bastion, will allow for secure "break-glass" debugging if ever required.
 
 ---
-## 💼 Strategic Importance & Business Value
+## Strategic Importance & Business Value
 
 This architecture is a strategic enabler for the business, providing:
 * **Enhanced Security Posture:** A "zero-trust" network with private endpoints and fine-grained network policies drastically reduces the attack surface.
@@ -171,16 +171,7 @@ This architecture is a strategic enabler for the business, providing:
 * **Scalability & Cost-Effectiveness:** The use of the cluster autoscaler ensures that we only pay for the compute resources we need, automatically scaling to meet user demand.
 
 ---
-## ✅ Success Criteria
-
-The Proof of Concept will be deemed successful upon the unconditional achievement of the following criteria:
-* **Automation:** All Azure infrastructure is successfully provisioned and modified exclusively through the GitHub Actions pipeline triggered by a `git push`.
-* **Security:** The deployed AKS cluster's API server is confirmed to be private and not accessible from the public internet.
-* **Integration:** A DNS query for a deployed application's hostname from the corporate network resolves correctly to the private IP of the Ingress Controller.
-* **Functionality:** The sample application is successfully deployed and is fully accessible from a client on the corporate network.
-
----
-## 👥 Required Resources & Stakeholders
+## Required Resources & Stakeholders
 
 * **Azure Platform:**
     * An active Azure Subscription with Contributor-level permissions.
